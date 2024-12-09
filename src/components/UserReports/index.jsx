@@ -49,7 +49,7 @@ const UserReports = () => {
                 title="Denúncias"
                 bordered={false}
                 style={{
-                    width: '70vw',
+                    width: '80vw',
                 }}
             >
                 {reports.map((report) => (

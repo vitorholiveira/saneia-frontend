@@ -4,6 +4,7 @@ const { Header, Content } = Layout;
 import Login from './components/Login';
 import UserReports from './components/UserReports';
 import ReportForm from './components/ReportForm';
+import MapPage from './components/MapPage';
 
 const App = () => {
   const [selectedKey, setSelectedKey] = useState('1');
@@ -17,6 +18,8 @@ const App = () => {
 
   const renderContent = () => {
     switch(selectedKey) {
+      case '1':
+        return <MapPage />
       case '2':
         return <ReportForm />
       case '3':

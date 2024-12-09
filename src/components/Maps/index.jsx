@@ -7,21 +7,20 @@ import 'leaflet/dist/leaflet.css';
 import './index.css';
 
 export const Map = (props) => {
-
-  const bounds = [
-    [-90, -180],
-    [90, 180]
+  const portoAlegreBounds = [
+    [-30.295, -51.552], // Sudoeste
+    [-29.849, -50.851], // Nordeste
   ];
 
   const displayMap = useMemo(
     () => (
       <MapContainer
-        center={props.center}
-        zoom={props.zoom}
-        style={{ height: props.styleHeight, width: props.styleWidth }}
-        maxBounds={bounds}
-        minZoom={1.0}
-        maxBoundsViscosity={1.0}
+        center={props.center || [-30.0346, -51.2177]}
+        zoom={props.zoom || 12}
+        style={{ height: props.styleHeight || "500px", width: props.styleWidth || "100%" }}
+        maxBounds={portoAlegreBounds} 
+        maxBoundsViscosity={1.0} 
+        minZoom={11}
       >
         <ScaleControl imperial={false} />
         <LayersControl position="topright">
@@ -43,13 +42,13 @@ export const Map = (props) => {
               url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
             />
           </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name="Esri World Topo Map">
+          <LayersControl.BaseLayer checked name="Esri World Topo Map">
             <TileLayer
               attribution='Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
               url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
             />
           </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer checked name="Esri World Imagery">
+          <LayersControl.BaseLayer name="Esri World Imagery">
             <TileLayer
               attribution='Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
               url={"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"}

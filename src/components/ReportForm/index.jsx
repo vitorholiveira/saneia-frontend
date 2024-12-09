@@ -26,7 +26,7 @@ const ReportForm = () => {
             <Card
                 title="Denunciar"
                 bordered={false}
-                style={{ width: '70vw'}}
+                style={{ width: '80vw'}}
             >
                 <Form
                     name="report-form"
@@ -87,7 +87,7 @@ const ReportForm = () => {
 
                         {/* Map Column */}
                         <Col span={12}>
-                            <Map center={[51.505, -0.09]} styleHeight="70vh" zoom="3">
+                            <Map styleHeight="70vh">
                                 <LocationMarkerOnClick latLong={latLong} setLatLong={setLatLong} />
                             </Map>
                         </Col>
