@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import { Layout, Menu, theme } from 'antd';
+import React, { useState, useContext } from 'react';
+import { Layout, Menu, Button } from 'antd';
 const { Header, Content } = Layout;
 import Login from './components/Login';
 import UserReports from './components/UserReports';
 import ReportForm from './components/ReportForm';
 import MapPage from './components/MapPage';
+import { setLogin } from './components/Store/actions';
+import { store } from './components/Store';
 
 const App = () => {
   const [selectedKey, setSelectedKey] = useState('1');
+  const globalState = useContext(store);
+  const { state, dispatch } = globalState;
 
   const items = [
     { key: "1", label: "Mapa" },
@@ -27,6 +31,10 @@ const App = () => {
         return null;
     }
   };
+
+  const logout = () => {
+    dispatch(setLogin(false))
+  }
 
   return (
     <Layout style={{ height: '100vh' }}>
@@ -50,6 +58,8 @@ const App = () => {
           }}
           onClick={({ key }) => setSelectedKey(key)}
         />
+        {state.login === true  && <Button type="primary" onClick={logout}>Logout</Button>}
+        {state.login === false && <div style={{ color: 'white', flex: 1, textAlign: 'right'}}>Você não está logado.</div>}
       </Header>
       <Content
         style={{
