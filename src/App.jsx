@@ -41,7 +41,7 @@ const App = () => {
       <Header
         style={{
           position: 'fixed',
-          zIndex: 1000,
+          zIndex: 1005,
           width: '100%',
           display: 'flex',
           alignItems: 'center',
