@@ -26,7 +26,7 @@ const ReportForm = () => {
             <Card
                 title="Denunciar"
                 bordered={false}
-                style={{ width: '80vw'}}
+                style={{ width: '80vw', height: 1000}}
             >
                 <Form
                     name="report-form"
@@ -81,20 +81,20 @@ const ReportForm = () => {
                                 name="description"
                                 rules={[{required: true, message: 'Descreva a denúncia.'}]}
                                 >
-                                <Input.TextArea autoSize={false}  style={{ height: '43.2vh', overflowY: 'scroll', resize: 'none'  }} />
+                                <Input.TextArea autoSize={false}  style={{ margin: 0, height: 540, overflowY: 'scroll', resize: 'none'  }} />
                             </Form.Item>
                         </Col>
 
                         {/* Map Column */}
                         <Col span={12}>
-                            <Map styleHeight="70vh">
+                            <Map styleHeight={840}>
                                 <LocationMarkerOnClick latLong={latLong} setLatLong={setLatLong} />
                             </Map>
                         </Col>
                     </Row>
                     <Row>
                         <Form.Item style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
-                            <Button style={{width: '15vw'}} type="primary" htmlType="submit">
+                            <Button style={{width: 300}} type="primary" htmlType="submit">
                                 Enviar
                             </Button>
                         </Form.Item>

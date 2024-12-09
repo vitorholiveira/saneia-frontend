@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Space, Button } from 'antd';
 import { EyeOutlined, SmileOutlined, FrownOutlined } from '@ant-design/icons';
+import ReportModal from '../ReportModal';
 
 const UserReports = () => {
+    const [isOpenModal, setIsOpenModal] = useState(false)
     const reports = [
         { id: 1, title: 'Denúncia 1', status: true },
         { id: 2, title: 'Denúncia 2', status: false },
@@ -26,7 +28,7 @@ const UserReports = () => {
             <Button
                 type="link"
                 onClick={() => {
-                    console.log('Open:', title);
+                    setIsOpenModal(true)
                 }}
             >
                 <Space>
@@ -45,11 +47,13 @@ const UserReports = () => {
                 backgroundColor: '#f5f5f5',
             }}
         >
+            <ReportModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>
             <Card
-                title="Denúncias"
+                title="Suas Denúncias"
                 bordered={false}
                 style={{
                     width: '80vw',
+                    height: 1000,
                 }}
             >
                 {reports.map((report) => (

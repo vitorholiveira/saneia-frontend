@@ -17,9 +17,10 @@ const MapPage = () => {
                 bordered={false}
                 style={{
                     width: '80vw',
+                    height: 1000,
                 }}
             >
-                <Map styleHeight='75vh'>
+                <Map styleHeight={900}>
                 </Map>
             </Card>
         </div>
