@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Card, Form, Input, Select, InputNumber, Row, Col, Button } from 'antd';
+import { Card, Form, Input, Select, InputNumber, Row, Col, Button, message } from 'antd';
 import { Map, LocationMarkerOnClick } from '../Maps';
 import { store } from '../Store';
 import Login from '../Login';
 
 const ReportForm = () => {
-    const [latLong, setLatLong] = useState({
+    const [messageApi, contextHolder] = message.useMessage();
+    const defaultLatLong = {
         latitude: null,
         longitude: null
-    });
+    }
+    const [latLong, setLatLong] = useState(defaultLatLong);
     const [form] = Form.useForm();
     const globalState = useContext(store);
     const { state, dispatch } = globalState;
@@ -23,14 +25,24 @@ const ReportForm = () => {
 
     const onFinish = (values) => {
         console.log(values);
+        success();
+        form.resetFields();
+        setLatLong(defaultLatLong);
+    };
+
+    const success = () => {
+        messageApi.open({
+          type: 'success',
+          content: 'Denúncia enviada com sucesso!',
+        });
     };
 
     if(state.login === false)
         return <Login />
 
-
     return (
         <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#f5f5f5'}}>
+            {contextHolder}
             <Card
                 title="Denunciar"
                 bordered={false}
