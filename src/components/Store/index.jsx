@@ -39,7 +39,7 @@ const StateProvider = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem('login', JSON.stringify(state.login));
-    }, [state.localLogin]);
+    }, [state.login]);
 
     return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
