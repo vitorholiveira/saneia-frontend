@@ -7,13 +7,14 @@ const ReportModal = ({isOpen, setIsOpen}) => {
 
     const handleClose = () => {
         setIsOpen(false);
+        setShowMap(false);
     };
 
     useEffect(() => {
-        setTimeout(function() {
-          setShowMap(true);
-        }, 2000);
-    }, []);
+        if(!isOpen)
+            return
+        setShowMap(true);
+    }, [isOpen]);
 
     return (
         <Modal
