@@ -67,7 +67,7 @@ const UserReports = () => {
                 {reports2.length === 0 &&
                     <Alert
                         message="Você não fez denúncias"
-                        description={"Envie sua denúncia na aba \"Denunciar\"."}
+                        description={"Envie sua denúncia na página \"Denunciar\"."}
                         type="info"
                         showIcon
                     />
