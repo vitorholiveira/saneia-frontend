@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Card, Space, Button } from 'antd';
+import { Card, Space, Button, Alert } from 'antd';
 import { EyeOutlined, SmileOutlined, FrownOutlined } from '@ant-design/icons';
 import ReportModal from '../ReportModal';
 import { store } from '../Store';
@@ -13,6 +13,7 @@ const UserReports = () => {
         { id: 3, title: 'Denúncia 3', status: true },
         { id: 4, title: 'Denúncia 4', status: false },
     ];
+    const reports2 = []
     const globalState = useContext(store);
     const { state, dispatch } = globalState;
 
@@ -63,6 +64,14 @@ const UserReports = () => {
                     height: 1000,
                 }}
             >
+                {reports2.length === 0 &&
+                    <Alert
+                        message="Você não fez denúncias"
+                        description={"Envie sua denúncia na aba \"Denunciar\"."}
+                        type="info"
+                        showIcon
+                    />
+                }
                 {reports.map((report) => (
                     <ReportItem
                         key={report.id}
