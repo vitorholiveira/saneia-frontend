@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu, Button, Space } from 'antd';
 const { Header, Content } = Layout;
 import Login from './components/Login';
 import UserReports from './components/UserReports';
@@ -37,7 +37,7 @@ const App = () => {
   }
 
   return (
-    <Layout style={{ height: '100vh' }}>
+    <Layout style={{ height: '100vh', backgroundColor: '#f5f5f5'}}>
       <Header
         style={{
           position: 'fixed',
@@ -59,9 +59,9 @@ const App = () => {
           onClick={({ key }) => setSelectedKey(key)}
         />
         {state.login === true  && <Button type="primary" onClick={logout}>Logout</Button>}
-        {state.login === false && <div style={{ color: 'white', flex: 1, textAlign: 'right'}}>Você não está logado.</div>}
+        {state.login === false && <div style={{ color: 'white', flex: 1, textAlign: 'right'}}>Você não fez login.</div>}
       </Header>
-      <Content
+      <Space
         style={{
           marginTop: 64, // Header height
           padding: 40,
@@ -70,7 +70,7 @@ const App = () => {
         }}
       >
         {renderContent()}
-      </Content>
+      </Space>
     </Layout>
   );
 };

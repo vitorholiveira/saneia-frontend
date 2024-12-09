@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Card, Button, Form, Input } from 'antd';
+import { Card, Button, Form, Input, Alert, Space, Col } from 'antd';
 import { setLogin } from '../Store/actions';
 import { store } from '../Store';
 
@@ -16,53 +16,55 @@ const Login = () => {
     };
     
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                backgroundColor: '#f5f5f5', // Adicione um fundo, se quiser
-            }}
-        >
-            <Card
-                title="Login"
-                bordered={false}
-                style={{
-                    width: 500,
-                    height: 320
-                }}
-            >
-                <Form
-                    name="basic"
-                    layout="vertical"
-                    initialValues={{remember: true}}
-                    onFinish={onFinish}
-                    onFinishFailed={onFinishFailed}
-                    autoComplete="off"
+        <Space>
+            <Col>
+                <Alert 
+                    message="Para acessar essa página você precisa fazer login."
+                    type="warning"
+                    style={{marginBottom: 15}}
+                    showIcon
+                />
+                <Card
+                    title="Login"
+                    bordered={false}
+                    style={{
+                        width: 500,
+                        height: 320
+                    }}
                 >
-                    <Form.Item
-                        label="Usuário"
-                        name="username"
-                        rules={[{required: true, message: 'Insira o seu nome de usuário.'}]}
+                    <Form
+                        name="basic"
+                        layout="vertical"
+                        initialValues={{remember: true}}
+                        onFinish={onFinish}
+                        onFinishFailed={onFinishFailed}
+                        autoComplete="off"
                     >
-                        <Input />
-                    </Form.Item>
+                        <Form.Item
+                            label="Usuário"
+                            name="username"
+                            rules={[{required: true, message: 'Insira o seu nome de usuário.'}]}
+                        >
+                            <Input />
+                        </Form.Item>
 
-                    <Form.Item
-                        label="Senha"
-                        name="password"
-                        rules={[{required: true, message: 'Insira a sua senha.'}]}
-                    >
-                        <Input.Password />
-                    </Form.Item>
+                        <Form.Item
+                            label="Senha"
+                            name="password"
+                            rules={[{required: true, message: 'Insira a sua senha.'}]}
+                        >
+                            <Input.Password />
+                        </Form.Item>
 
-                    <Form.Item>
-                        <Button style={{width: '100%'}} type="primary" htmlType="submit">
-                            Entrar
-                        </Button>
-                    </Form.Item>
-                </Form>
-            </Card>
-        </div>
+                        <Form.Item>
+                            <Button style={{width: '100%'}} type="primary" htmlType="submit">
+                                Entrar
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </Card>
+            </Col>
+        </Space>
     );
 };
 
