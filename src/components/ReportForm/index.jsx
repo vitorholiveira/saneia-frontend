@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Card, Form, Input, Select, InputNumber, Row, Col, Button } from 'antd';
 import { Map, LocationMarkerOnClick } from '../Maps';
+import { store } from '../Store';
+import Login from '../Login';
 
 const ReportForm = () => {
     const [latLong, setLatLong] = useState({
@@ -8,6 +10,8 @@ const ReportForm = () => {
         longitude: null
     });
     const [form] = Form.useForm();
+    const globalState = useContext(store);
+    const { state, dispatch } = globalState;
 
     useEffect(() => {
         const { latitude, longitude } = latLong;
@@ -20,6 +24,10 @@ const ReportForm = () => {
     const onFinish = (values) => {
         console.log(values);
     };
+
+    if(state.login === false)
+        return <Login />
+
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#f5f5f5'}}>

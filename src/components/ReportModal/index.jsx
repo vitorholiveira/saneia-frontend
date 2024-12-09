@@ -3,9 +3,17 @@ import { Form, Input, Select, InputNumber, Row, Col, Modal } from 'antd';
 import { Map, LocationMarkerOnClick } from '../Maps';
 
 const ReportModal = ({isOpen, setIsOpen}) => {
+    const [showMap, setShowMap] = useState(false)
+
     const handleClose = () => {
         setIsOpen(false);
     };
+
+    useEffect(() => {
+        setTimeout(function() {
+          setShowMap(true);
+        }, 2000);
+    }, []);
 
     return (
         <Modal
@@ -79,7 +87,7 @@ const ReportModal = ({isOpen, setIsOpen}) => {
 
                         {/* Map Column */}
                         <Col span={12}>
-                        {isOpen && (
+                        {showMap && (
                             <Map styleHeight="70vh">
                                 
                             </Map>)}

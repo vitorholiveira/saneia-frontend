@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card, Space, Button } from 'antd';
 import { EyeOutlined, SmileOutlined, FrownOutlined } from '@ant-design/icons';
 import ReportModal from '../ReportModal';
+import { store } from '../Store';
+import Login from '../Login';
 
 const UserReports = () => {
     const [isOpenModal, setIsOpenModal] = useState(false)
@@ -11,6 +13,8 @@ const UserReports = () => {
         { id: 3, title: 'Denúncia 3', status: true },
         { id: 4, title: 'Denúncia 4', status: false },
     ];
+    const globalState = useContext(store);
+    const { state, dispatch } = globalState;
 
     const ReportItem = ({ title, status }) => (
         <div
@@ -38,6 +42,9 @@ const UserReports = () => {
             </Button>
         </div>
     );
+
+    if(state.login === false)
+        return <Login />
 
     return (
         <div

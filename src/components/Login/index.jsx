@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, Button, Form, Input } from 'antd';
+import { setLogin } from '../Store/actions';
+import { store } from '../Store';
 
 const Login = () => {
+    const globalState = useContext(store);
+    const { state, dispatch } = globalState;
+
     const onFinish = (values) => {
-        console.log('Success:', values);
+        dispatch(setLogin(true))
     };
 
     const onFinishFailed = (errorInfo) => {
