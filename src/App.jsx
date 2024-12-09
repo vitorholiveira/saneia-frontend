@@ -12,8 +12,7 @@ const App = () => {
   const items = [
     { key: "1", label: "Mapa" },
     { key: "2", label: "Denunciar" },
-    { key: "3", label: "Suas denúncias" },
-    { key: "4", label: "Login" },
+    { key: "3", label: "Suas denúncias" }
   ];
 
   const renderContent = () => {
@@ -24,8 +23,6 @@ const App = () => {
         return <ReportForm />
       case '3':
         return <UserReports />;
-      case '4':
-        return <Login />
       default:
         return null;
     }
