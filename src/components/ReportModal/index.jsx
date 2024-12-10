@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, InputNumber, Row, Col, Modal } from 'antd';
 import { Map, LocationMarkerOnClick } from '../Maps';
+import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 
 const ReportModal = ({isOpen, setIsOpen}) => {
     const [showMap, setShowMap] = useState(false)
@@ -15,13 +16,20 @@ const ReportModal = ({isOpen, setIsOpen}) => {
             return
         setShowMap(true);
     }, [isOpen]);
+    const status = true
+
+    const titleComponent = (status) => {
+        return (<span>
+            <span style={{marginLeft: 5}}>Descrição 1</span>
+                    </span>)
+    }
 
     return (
         <Modal
-            title="Descrição 1"
+            title={"Descrição 1"}
             open={isOpen}
             onCancel={handleClose}
-            width={1500}
+            width={1000}
             footer={null}
         >
                 <Form
@@ -33,20 +41,15 @@ const ReportModal = ({isOpen, setIsOpen}) => {
                         <Col span={12}>
                             <Form.Item
                                 label="Autor"
-                                name="autor"
-                            >
+                                name="title"
+                                >
                                 <Input disabled/>
                             </Form.Item>
                             <Form.Item
                                 label="Tipo"
                                 name="type"
                                 >
-                                <Select style={{ width: '100%' }} disabled>
-                                    <Select.Option value="Tipo 1">Tipo 1</Select.Option>
-                                    <Select.Option value="Tipo 1">Tipo 2</Select.Option>
-                                    <Select.Option value="Tipo 3">Tipo 3</Select.Option>
-                                    <Select.Option value="Tipo 4">Tipo 4</Select.Option>
-                                </Select>
+                                <Input disabled/>
                             </Form.Item>
                             <Row gutter={16}>
                                 <Col span={12}>
@@ -54,11 +57,7 @@ const ReportModal = ({isOpen, setIsOpen}) => {
                                         label="Latitude"
                                         name="latitude"
                                         >
-                                        <InputNumber
-                                            style={{ width: '100%' }}
-                                            precision={4}
-                                            disabled
-                                        />
+                                        <InputNumber style={{ width: '100%' }} precision={4} disabled />
                                     </Form.Item>
                                 </Col>
                                 <Col span={12}>
@@ -66,32 +65,38 @@ const ReportModal = ({isOpen, setIsOpen}) => {
                                         label="Longitude"
                                         name="longitude"
                                     >
-                                        <InputNumber
-                                            style={{ width: '100%' }}
-                                            precision={4}
-                                            disabled
-                                        />
+                                        <InputNumber style={{ width: '100%' }} precision={4} disabled />
                                     </Form.Item>
                                 </Col>
                             </Row>
                             <Form.Item
                                 label="Descrição"
                                 name="description"
-                            >
+                                >
                                 <Input.TextArea
                                     autoSize={false} 
-                                    style={{ height: '43.2vh', overflowY: 'scroll', resize: 'none'  }}
+                                    style={{ margin: 0, resize: 'none'  }} 
+                                    maxLength={600}
                                     disabled
+                                    rows={11}
                                 />
                             </Form.Item>
                         </Col>
 
                         {/* Map Column */}
                         <Col span={12}>
-                        {showMap && (
-                            <Map styleHeight="70vh">
-                                
-                            </Map>)}
+                            {status ?
+                                <span style={{ color: 'mediumseagreen'}}>
+                                    <SmileOutlined style={{marginRight: 5}}/>
+                                    Resolvido
+                                </span>
+                                :
+                                <span style={{ color: 'tomato'}}>
+                                    <FrownOutlined style={{marginRight: 5}}/>
+                                    Não Resolvido
+                                </span>
+                            }
+                            {showMap && <Map styleHeight={525}/>}
                         </Col>
                     </Row>
                 </Form>

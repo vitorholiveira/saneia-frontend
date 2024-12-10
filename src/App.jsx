@@ -66,7 +66,7 @@ const App = () => {
           }}
           onClick={({ key }) => setSelectedKey(key)}
         />
-        {state.login === true  && <Button type="primary" onClick={logout}>Logout</Button>}
+        {state.login === true  && <Button color="primary" variant="outlined" onClick={logout}>Logout</Button>}
         {state.login === false && <div style={{ flex: 1, textAlign: 'right'}}>Você não fez login.</div>}
       </Header>
       <Space
