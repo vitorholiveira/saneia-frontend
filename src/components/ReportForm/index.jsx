@@ -33,7 +33,7 @@ const ReportForm = () => {
     const success = () => {
         messageApi.open({
           type: 'success',
-          content: 'Denúncia enviada com sucesso!',
+          content: 'Denúncia enviada com sucesso!'
         });
     };
 
@@ -41,12 +41,12 @@ const ReportForm = () => {
         return <Login />
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#f5f5f5'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#f5f5f5', marginTop: 40}}>
             {contextHolder}
             <Card
                 title="Denunciar"
                 bordered={false}
-                style={{ width: '80vw', height: 1000}}
+                style={{ width: '80vw', height: 660}}
             >
                 <Form
                     name="report-form"
@@ -62,14 +62,14 @@ const ReportForm = () => {
                                 name="title"
                                 rules={[{required: true, message: 'Insira o título da denúncia.'}]}
                                 >
-                                <Input />
+                                <Input/>
                             </Form.Item>
                             <Form.Item
                                 label="Tipo"
                                 name="type"
                                 rules={[{required: true, message: 'Selecione o tipo da denúncia.'}]}
                                 >
-                                <Select style={{ width: '100%' }}>
+                                <Select>
                                     <Select.Option value="Tipo 1">Tipo 1</Select.Option>
                                     <Select.Option value="Tipo 1">Tipo 2</Select.Option>
                                     <Select.Option value="Tipo 3">Tipo 3</Select.Option>
@@ -101,19 +101,25 @@ const ReportForm = () => {
                                 name="description"
                                 rules={[{required: true, message: 'Descreva a denúncia.'}]}
                                 >
-                                <Input.TextArea autoSize={false}  style={{ margin: 0, height: 540, overflowY: 'scroll', resize: 'none'  }} />
+                                <Input.TextArea
+                                    autoSize={false} 
+                                    style={{ margin: 0, resize: 'none'  }} 
+                                    maxLength={600}
+                                    showCount
+                                    rows={8}
+                                />
                             </Form.Item>
                         </Col>
 
                         {/* Map Column */}
                         <Col span={12}>
-                            <Map styleHeight={840}>
+                            <Map styleHeight={500}>
                                 <LocationMarkerOnClick latLong={latLong} setLatLong={setLatLong} />
                             </Map>
                         </Col>
                     </Row>
                     <Row>
-                        <Form.Item style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+                        <Form.Item style={{width: '100%', display: 'flex', justifyContent: 'center', marginTop: 20}}>
                             <Button style={{width: 300}} type="primary" htmlType="submit">
                                 Enviar
                             </Button>

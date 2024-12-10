@@ -16,7 +16,7 @@ const Login = () => {
     };
     
     return (
-        <Space>
+        <Space style={{marginTop: 40}}>
             <Col>
                 <Alert 
                     message="Para acessar essa página você precisa fazer login."

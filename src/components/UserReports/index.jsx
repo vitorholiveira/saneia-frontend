@@ -27,7 +27,7 @@ const UserReports = () => {
             }}
         >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                {status ? <SmileOutlined /> : <FrownOutlined />}
+                {status ? <SmileOutlined style={{ color: 'mediumseagreen' }}/> : <FrownOutlined style={{ color: 'tomato' }}/>}
                 {title}
             </div>
             <Button
@@ -53,6 +53,7 @@ const UserReports = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 backgroundColor: '#f5f5f5',
+                marginTop: 40
             }}
         >
             <ReportModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>
@@ -61,7 +62,6 @@ const UserReports = () => {
                 bordered={false}
                 style={{
                     width: '80vw',
-                    height: 1000,
                 }}
             >
                 {reports2.length === 0 &&

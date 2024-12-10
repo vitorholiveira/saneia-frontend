@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Layout, Menu, Button, Space } from 'antd';
+import { Layout, Menu, Button, Space, Image } from 'antd';
 const { Header, Content } = Layout;
 import Login from './components/Login';
 import UserReports from './components/UserReports';
@@ -7,6 +7,7 @@ import ReportForm from './components/ReportForm';
 import MapPage from './components/MapPage';
 import { setLogin } from './components/Store/actions';
 import { store } from './components/Store';
+import logoSaneia from './assets/logo_saneia.png';
 
 const App = () => {
   const [selectedKey, setSelectedKey] = useState('1');
@@ -45,26 +46,32 @@ const App = () => {
           width: '100%',
           display: 'flex',
           alignItems: 'center',
+          backgroundColor: '#ffffff'
         }}
       >
+        <Image
+          width={50}
+          src={logoSaneia}
+          preview={false}
+          style={{marginRight: 10}}
+        />
         <Menu
-          theme="dark"
           mode="horizontal"
           selectedKeys={[selectedKey]}
           items={items}
           style={{
             flex: 1,
             minWidth: 0,
+            marginLeft:20
           }}
           onClick={({ key }) => setSelectedKey(key)}
         />
         {state.login === true  && <Button type="primary" onClick={logout}>Logout</Button>}
-        {state.login === false && <div style={{ color: 'white', flex: 1, textAlign: 'right'}}>Você não fez login.</div>}
+        {state.login === false && <div style={{ flex: 1, textAlign: 'right'}}>Você não fez login.</div>}
       </Header>
       <Space
         style={{
           marginTop: 64, // Header height
-          padding: 40,
           display: 'flex',
           justifyContent: 'center',
         }}
